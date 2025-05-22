@@ -1,0 +1,21 @@
+Code for inverter assuming min area:
+.include MOSFET_models_0p5_0p18-2.inc
+
+* Voltage supplies
+* Power supply and input
+VDD VDD 0 DC 1.8
+VIN IN 0 DC 0
+
+* Inverter
+M1 OUT IN 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M2 OUT IN VDD VDD PMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u pd=2.88u
+
+* Load: series resistor and capacitor
+RLOAD OUT N1 1k
+CLOAD N1 0 0.2p
+
+* .DC sweep of input VIN
+.DC VIN 0 1.8 0.01
+
+
+.END
