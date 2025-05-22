@@ -1,0 +1,77 @@
+Number 6
+* Voltage supplies
+* Power supply and input
+.include MOSFET_models_0p5_0p18-2.inc
+VDD VDD 0 1.8
+
+* Pulse sources for inputs
+* Format: PULSE(V1 V2 TD TR TF PW PER)
+* V1=initial voltage, V2=pulsed voltage, TD=delay time, TR=rise time, TF=fall time, PW=pulse width, PER=period
+Vin_S1 S1 0 PULSE(0 1.8 0 10p 10p 100n 200n)
+Vin_S2 S2 0 PULSE(0 1.8 50n 10p 10p 100n 200n)
+Vin_D0 D0 0 PULSE(0 1.8 25n 10p 10p 50n 100n)
+Vin_D1 D1 0 PULSE(0 1.8 12.5n 10p 10p 25n 50n)
+Vin_D2 D2 0 PULSE(0 1.8 6.25n 10p 10p 12.5n 25n)
+Vin_D3 D3 0 PULSE(0 1.8 3.125n 10p 10p 6.25n 12.5n)
+
+*Inverters
+M_inv S1_bar S1 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+R_pull S1_bar VDD 10k
+M_inv1 S2_bar S2 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+R_pull1 S2_bar VDD 10k
+M_inv2 D0_bar D0 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+R_pull2 D0_bar VDD 10k
+M_inv3 D1_bar D1 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+R_pull3 D1_bar VDD 10k
+M_inv4 D2_bar D2 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+R_pull4 D2_bar VDD 10k
+M_inv5 D3_bar D3 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+R_pull5 D3_bar VDD 10k
+
+*PUN
+M0 DM1 S1_bar VDD VDD PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M1 DM2 S2_bar DM1 DM1 PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M2 Y D0 DM2 VDD PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M3 DM4 S1_bar VDD VDD PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M4 DM5 S2 DM4 DM4 PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M5 Y D1 DM5 DM5 PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M6 DM7 S1 VDD VDD PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M7 DM8 S2_bar DM7 DM7 PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M8 Y D2 DM8 DM8 PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M9 DM10 S1 VDD VDD PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M10 DM11 S2 DM10 DM10 PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+M11 Y D3 DM11 DM11 PMOS0P18 W=1.8u L=0.18u as=0.972p ad=0.972p ps=4.68u pd=4.68u
+
+*PDN
+M12 Y S1_bar Src Src NMOS0P18 W=0.9u L=0.18u as=0.486p ad=0.486p ps=2.88u pd=2.88u
+M13 Y S2_bar Src Src NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M14 Y D3_bar Src Src NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M15 Src S1_bar Src1 Src1 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M16 Src S2 Src1 Src1 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M17 Src D2_bar Src1 Src1 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M18 Src1 S1 Src2 Src2 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M19 Src1 S2_bar Src2 Src2 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M20 Src1 D1_bar Src2 Src2 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M21 Src2 S1 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M22 Src2 S2 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M23 Src2 D0_bar 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+
+* Load resistor and capacitor for output Y
+RLOAD Y YLOAD 1k
+CLOAD YLOAD 0 0.2p
+
+* Transient analysis instead of DC sweep
+.TRAN 1p 500n
+
+* Plot commands for inputs and outputs as mentioned in problem
+
+* Input signals
+.PLOT TRAN V(S1) V(S2) V(D0) V(D1) V(D2) V(D3)
+* Inverted signals
+.PLOT TRAN V(S1_bar) V(S2_bar) V(D0_bar) V(D1_bar) V(D2_bar) V(D3_bar)
+* Output
+.PLOT TRAN V(Y) V(YLOAD)
+
+
+
+.END

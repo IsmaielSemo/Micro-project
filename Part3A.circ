@@ -1,0 +1,26 @@
+Part A number 3 (matched case) :
+* Voltage supplies
+* Power supply and input
+.include MOSFET_models_0p5_0p18-2.inc
+VDD VDD 0 DC 3.3
+Vin in 0 PULSE(0 3.3 0 50p 50p 2.5n 5n)
+
+
+* Inverter
+M1 OUT IN 0 0 NMOS0P5 W=1.25u L=0.5u as=1.875p ad=1.875p ps=5.5u pd=5.5u
+M2 OUT IN VDD VDD PMOS0P5 W=5.6294u L=0.5u as=8.4435p ad=8.4435p ps=14.2588u pd=14.2588u
+
+* Load: series resistor and capacitor
+RLOAD OUT N1 1k
+CLOAD N1 0 0.5p
+
+.tran 0.001n 5n
+* Measure propagation delays
+.measure tpHL trig v(in) val=0.5 rise=1 targ v(OUT) val=0.5 fall=1
+.measure tpLH trig v(in) val=0.5 fall=1 targ v(OUT) val=0.5 rise=1
+
+* Control what to plot in the waveform viewer
+* You can view V(OUT), V(IN), and I(VDD) in the simulation plot window
+* I(VDD) gives you the supply current (LTspice auto-labels it as current through VDD source)
+
+.END
