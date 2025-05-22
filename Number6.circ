@@ -65,12 +65,12 @@ CLOAD YLOAD 0 0.2p
 
 * Plot commands for inputs and outputs as mentioned in problem
 
-* Input signals
-.PLOT TRAN V(S1) V(S2) V(D0) V(D1) V(D2) V(D3)
+* Input signals (PLOT not working so it is done manually by us)
+*.PLOT TRAN V(S1) V(S2) V(D0) V(D1) V(D2) V(D3)
 * Inverted signals
-.PLOT TRAN V(S1_bar) V(S2_bar) V(D0_bar) V(D1_bar) V(D2_bar) V(D3_bar)
+*.PLOT TRAN V(S1_bar) V(S2_bar) V(D0_bar) V(D1_bar) V(D2_bar) V(D3_bar)
 * Output
-.PLOT TRAN V(Y) V(YLOAD)
+*.PLOT TRAN V(Y) V(YLOAD)
 
 
 
