@@ -7,7 +7,7 @@ VDD VDD 0 DC 1.8
 VIN IN 0 DC 0
 
 * Inverter
-M1 OUT IN 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M1 OUT IN 0 0 NMOS0P18 W=0.9u L=0.18u as=0.486p ad=0.486p ps=2.88u pd=2.88u
 M2 OUT IN VDD VDD PMOS0P18 W=4.0532u L=0.18u as=2.18p ad=2.18p ps=9.1864u pd=9.1864u
 
 * Load: series resistor and capacitor
