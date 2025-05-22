@@ -17,17 +17,22 @@ Vin_D2 D2 0 PULSE(0 1.8 6.25n 10p 10p 12.5n 25n)
 Vin_D3 D3 0 PULSE(0 1.8 3.125n 10p 10p 6.25n 12.5n)
 
 *Inverters
-M_inv S1_bar S1 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+M_inv S1_bar S1 0 0 NMOS0P18 W=0.9u L=0.18u as=0.486p ad=0.486p ps=2.88u pd=2.88u
 R_pull S1_bar VDD 10k
-M_inv1 S2_bar S2 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+
+M_inv1 S2_bar S2 0 0 NMOS0P18 W=0.9u L=0.18u as=0.486p ad=0.486p ps=2.88u pd=2.88u
 R_pull1 S2_bar VDD 10k
-M_inv2 D0_bar D0 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+
+M_inv2 D0_bar D0 0 0 NMOS0P18 W=0.9u L=0.18u as=0.486p ad=0.486p ps=2.88u pd=2.88u
 R_pull2 D0_bar VDD 10k
-M_inv3 D1_bar D1 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+
+M_inv3 D1_bar D1 0 0 NMOS0P18 W=0.9u L=0.18u as=0.486p ad=0.486p ps=2.88u pd=2.88u
 R_pull3 D1_bar VDD 10k
-M_inv4 D2_bar D2 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+
+M_inv4 D2_bar D2 0 0 NMOS0P18 W=0.9u L=0.18u as=0.486p ad=0.486p ps=2.88u pd=2.88u
 R_pull4 D2_bar VDD 10k
-M_inv5 D3_bar D3 0 0 NMOS0P18 W=0.9u L=0.18u as=0.54p ad=0.54p ps=2.88u pd=2.88u
+
+M_inv5 D3_bar D3 0 0 NMOS0P18 W=0.9u L=0.18u as=0.486p ad=0.486p ps=2.88u pd=2.88u
 R_pull5 D3_bar VDD 10k
 
 *PUN
